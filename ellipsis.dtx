@@ -390,10 +390,18 @@
       \ifx\bbl@frenchdots\@undefined\else
         \PackageError{ellipsis}{Babel French loaded after ellipsis.sty}%
           {If you load Babel with the French option, do it before ellipsis.sty}%
-       \fi
-     \fi
-     \DeclareRobustCommand{\dots}{%
-       \ifmmode\mathellipsis\else\expandafter\textellipsis\fi}}
+      \fi
+    \fi
+  \@ifpackageloaded{amsmath}%
+    {%
+      \DeclareRobustCommand\dots{%
+        \ifmmode \@xp \mdots@ \else \@xp \textellipsis \fi}%
+    }%
+    {%
+      \DeclareRobustCommand\dots{%
+        \ifmmode \mathellipsis \else \expandafter \textellipsis\fi}%
+    }%
+}
 %    \end{macrocode}
 % \end{macro}
 %
