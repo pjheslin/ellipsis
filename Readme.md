@@ -11,3 +11,6 @@ ellipsis.sty where LaTeX will find it, and refresh TeX's list of
 available files.
 
 See the PDF file for full documentation.
+
+Peter Heslin
+p.j.heslin@dur.ac.uk
