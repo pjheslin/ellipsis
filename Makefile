@@ -9,4 +9,5 @@ package:
 	rm -rf ellipsis/
 	mkdir ellipsis
 	cp Readme.md ellipsis.dtx ellipsis.ins ellipsis.pdf ellipsis/
+	chmod 644 ellipsis/*
 	tar czvf ellipsis.tgz ellipsis/
