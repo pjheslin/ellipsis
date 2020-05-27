@@ -1,8 +1,8 @@
 pdf:
 	tex ellipsis.dtx
 	pdflatex ellipsis.dtx
-	makeindex -s /usr/local/texlive/2019/texmf-dist/makeindex/latex/gind.ist -o ellipsis.ind ellipsis.idx
-	makeindex -s /usr/local/texlive/2019/texmf-dist/makeindex/latex/gglo.ist -o ellipsis.gls ellipsis.glo
+	makeindex -s gind.ist -o ellipsis.ind ellipsis.idx
+	makeindex -s gglo.ist -o ellipsis.gls ellipsis.glo
 	pdflatex ellipsis.dtx
 
 package:
