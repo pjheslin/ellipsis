@@ -32,7 +32,7 @@
 
 \preamble
 
-ellipsis -- fixes spacing around ellipses (multiple dots)
+ellipsis -- fixes spacing around ellipses (three dots)
 
 \endpreamble
 
@@ -64,8 +64,12 @@ ellipsis -- fixes spacing around ellipses (multiple dots)
 %
 % \iffalse
 %<package>\NeedsTeXFormat{LaTeX2e}
+%<*driver>
+\ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
+\ProvidesFile{ellipsis.dtx}
+%</driver>
 %<package>\ProvidesPackage{ellipsis}
-%<package>   [2020/05/22 v1.7: fixes spacing around ellipses (multiple dots)]
+%<package|driver>  [2020/05/22 v1.7: fixes spacing around ellipses (three dots)]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -122,7 +126,10 @@ ellipsis -- fixes spacing around ellipses (multiple dots)
 %   corresponds to \textsf{ellipsis}~\fileversion, dated \filedate.
 %   Many thanks to Frank Mittelbach, who made numerous suggestions
 %   and bugfixes that greatly improved this package.}}
-% \author{Peter J. Heslin \\ \texttt{p.j.heslin@dur.ac.uk}}
+% \author{^^A
+%   Peter J. Heslin\\^^A
+%   \texttt{p.j.heslin@dur.ac.uk}\\^^A
+%   \texttt{https://github.com/pjheslin/ellipsis}}
 %
 % \maketitle
 %
