@@ -1,25 +1,75 @@
 % \iffalse meta-comment
+%<*package>
+%%
+%% Copyright (C) 2003-2020 by Peter Heslin <p.j.heslin@dur.ac.uk>
+%% ---------------------------------------------------------------------
+%%
+%% This work may be distributed and/or modified under the conditions
+%% of the LaTeX Project Public License, version 1.3c of the license
+%% or (at your option) any later version. The latest version of this 
+%% license is in:
+%%
+%%     http://www.latex-project.org/lppl.txt
+%%
+%% and version 1.3c or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "author-maintained".
+%%
+%% The current maintainer and author of this work is Peter Heslin.
+%%
+%</package>
+% \fi
 %
-% Copyright (C) 2003-20 by Peter Heslin <pheslin@gmail.com>
-% --------------------------------------------------
-%
-% This file may be distributed and/or modified under the conditions of
-% the LaTeX Project Public License, either version 1.2 of this license
-% or (at your option) any later version.  The latest version of this
-% license is in:
-%
-%    http://www.latex-project.org/lppl.txt
-%
-% and version 1.2 or later is part of all distributions of LaTeX
-% version 1999/12/01 or later.
-%
+% \iffalse
+%<*batch>
+\ifx\documentclass\undefined
+
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\usedir{tex/latex/ellipsis}
+
+\preamble
+
+ellipsis -- fixes spacing around ellipses (three dots)
+
+\endpreamble
+
+\generate{\file{ellipsis.sty}{\from{ellipsis.dtx}{package}}}
+
+\obeyspaces
+\Msg{*************************************************************}
+\Msg{*                                                           *}
+\Msg{* To finish the installation you have to move the following *}
+\Msg{* file into a directory searched by TeX:                    *}
+\Msg{*                                                           *}
+\Msg{*     ellipsis.sty                                          *}
+\Msg{*                                                           *}
+\Msg{* To produce the documentation run the file ellipsis.dtx    *}
+\Msg{* through LaTeX.                                            *}
+\Msg{*                                                           *}
+\Msg{* Happy TeXing!                                             *}
+\Msg{*                                                           *}
+\Msg{*************************************************************}
+
+\else
+
+\let\endbatchfile\relax
+
+\fi
+\endbatchfile
+%</batch>
 % \fi
 %
 % \iffalse
 %<package>\NeedsTeXFormat{LaTeX2e}
-%<package>\ProvidesPackage{ellipsis}
-%<package>   [2020/05/22 v1.7 ellipsis: fixes spacing around \dots]
-%
+%<*driver>
+\ifx\ProvidesFile\undefined\def\ProvidesFile#1[#2]{}\fi
+\ProvidesFile{ellipsis.dtx}%
+%</driver>
+%<package>\ProvidesPackage{ellipsis}%
+  [2020/05/22 v1.7 fixes spacing around ellipses (three dots)]
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{ellipsis}
@@ -75,7 +125,10 @@
 %   corresponds to \textsf{ellipsis}~\fileversion, dated \filedate.
 %   Many thanks to Frank Mittelbach, who made numerous suggestions
 %   and bugfixes that greatly improved this package.}}
-% \author{Peter J. Heslin \\ \texttt{p.j.heslin@dur.ac.uk}}
+% \author{^^A
+%   Peter J. Heslin\\^^A
+%   \texttt{p.j.heslin@dur.ac.uk}\\^^A
+%   \texttt{https://github.com/pjheslin/ellipsis}}
 %
 % \maketitle
 %
@@ -106,12 +159,12 @@
 % consists in the fact that \LaTeX\ always adds it, regardless of what text
 % follows.
 %
-% This package implements a simple fix.  It redefines the |\dots| and
-% |\textellipsis| commands so that they can look ahead at the next character and
-% change their behavior accordingly: if the next character is one of .,;:?! the
-% extra space is added, if not, no extra space is added (if you load a package
-% that makes any of these characters active, you may want to reload this list;
-% see the section below on see below on |\ellipsispunctuation| and
+% This package implements a simple fix. It redefines the commands |\dots| and
+% |\textellipsis| so that they can look ahead at the next character and change 
+% their behavior accordingly: if the next character is one of \texttt{.,;:?!} 
+% the extra space is added, if not, no extra space is added (if you load a
+% package that makes any of these characters active, you may want to reload
+% this list; see the section below on see below on |\ellipsispunctuation| and
 % compatibility). This particular list of punctuation marks was not chosen
 % arbitrarily: it includes all marks with a dot on the baseline (or a comma,
 % which is like a dot with a tail).  These marks produce a series of four dots
@@ -145,12 +198,11 @@
 %
 % \DescribeMacro{chicago} If you nevertheless want or have to use the
 % Chicago-style, widely spaced ellipsis with this package, you can pass it the
-% package option |chicago|. \DescribeMacro{mla} \textsf{Ellipsis.sty} also has
-% an |mla| package option, modeled on the same feature of \textsf{lips.sty},
-% which automatically puts square brackets around all ellipses. If, on the other
-% hand, you want to adhere to the full recommendations of the Chicago manual,
-% then you should consider using \textsf{lips} or \textsf{xellipsis} instead of
-% this package.
+% package option |chicago|. \DescribeMacro{mla} There is also package option 
+% |mla|, modeled on the same feature of \textsf{lips.sty}, which automatically
+% puts square brackets around all ellipses. If, on the other hand, you want to
+% adhere to the full recommendations of the Chicago manual, then you should 
+% consider using \textsf{lips} or \textsf{xellipsis} instead of this package.
 %
 % In conclusion, the best solution to the problem of typesetting ellipses is not
 % to use this package at all, but to use XeTeX.  You can put the Unicode
@@ -158,8 +210,8 @@
 % precomposed ellipsis glyph.  If you use a professional-quality OpenType font,
 % it will have an ellipsis glyph created by the type designer to fit with the
 % typeface and with proper kerning for punctuation afterward.  Not all fonts do
-% this, so make sure that the ellipsis character kerns properly with following
-% .,:;!?
+% this, so make sure that the ellipsis character kerns properly with 
+% \texttt{.,;:?!} following.
 %
 % \section{Usage}
 %
@@ -297,7 +349,7 @@
 %
 % \begin{macro}{\ellipsis@default}
 % This is the LaTeX default definition, which is necessary to use
-% when punctuation such as .,:;!? follows.
+% when punctuation such as \texttt{.,;:?!} follows.
 %    \begin{macrocode}
 \newcommand{\ellipsis@default}{%
   \ellipsis@before
@@ -359,7 +411,7 @@
   \fi}
 %    \end{macrocode}
 %
-% Here is the macro that looks ahead at the next token, put it in
+% Here is the actual macro that looks ahead at the next token, stores it in
 % \cs{ellipsis@token}, and invokes the code to scan for it in the
 % punctuation list.
 %
