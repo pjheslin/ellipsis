@@ -10,4 +10,4 @@ package:
 	mkdir ellipsis
 	cp README.md ellipsis.dtx ellipsis.pdf ellipsis/
 	chmod 644 ellipsis/*
-	tar czvf ellipsis.tgz ellipsis/
+	COPYFILE_DISABLE=1 tar czvf ellipsis.tgz ellipsis/
